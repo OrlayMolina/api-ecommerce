@@ -1,9 +1,13 @@
 const { response, request } = require('express');
+const Product = require('../models/Product.model');
 
-const productsGet = (req = request, res = response) => {
+const productsGet = async (req = request, res = response) => {
+    
+    const products = await Product.find();
+
     res.status(200).json({
-        msg: 'GET | Hola desde Products',
-        code: 'OK'
+        message: 'Datos cargados correctamente',
+        data: products
     });
 }
 
