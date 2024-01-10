@@ -4,6 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const port = process.env.PORT || 4000;
 const productRoutes = require('./routes/product.routes.js');
+const userRoutes = require('./routes/user.routes.js');
 const dbConnection = require('./database/config.js');
 
 //Middleware's
@@ -16,6 +17,7 @@ app.use(express.json());
     await dbConnection();
     //Carga de rutas.
     app.use(productRoutes);
+    app.use(userRoutes);
 
 })();
 

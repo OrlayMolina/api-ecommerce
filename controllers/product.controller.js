@@ -11,24 +11,38 @@ const productsGet = async (req = request, res = response) => {
     });
 }
 
-const productsPost = (req = request, res = response) => {
+const productsPost = async (req = request, res = response) => {
+
+    const body = req.body;
+
+    let product = Product(body);
+    await product.save();
+
     res.status(200).json({
-        msg: 'POST | Hola desde Products',
-        code: 'OK'
+        message: 'Producto agregado correctamente',
+        data: product
     });
 }
 
-const productsPut = (req = request, res = response) => {
+const productsPut = async (req = request, res = response) => {
+
+    const { id } = req.query;
+    await Product.save();
+
     res.status(200).json({
-        msg: 'PUT | Hola desde Products',
-        code: 'OK'
+        msg: 'Producto actualizado correctamente',
+        code: id
     });
 }
 
-const productsDelete = (req = request, res = response) => {
+const productsDelete = async (req = request, res = response) => {
+    
+    const { id } = req.query;
+    await Product.findByIdAndDelete(id);
+
     res.status(200).json({
-        msg: 'DELETE | Hola desde Products',
-        code: 'OK'
+        message: 'Producto eliminado correctamente  ',
+        code: id
     });
 }
 
