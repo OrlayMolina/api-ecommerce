@@ -14,10 +14,14 @@ app.use(express.json());
 //Función asincrona
 ( async ()=> {
 
-    await dbConnection();
-    //Carga de rutas.
-    app.use(productRoutes);
-    app.use(userRoutes);
+    try {
+        await dbConnection();
+        // Carga de rutas.
+        app.use(productRoutes);
+        app.use(userRoutes);
+    } catch (error) {
+        console.error('Error en la conexión a la base de datos:', error);
+    }
 
 })();
 
