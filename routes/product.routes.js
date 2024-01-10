@@ -3,9 +3,9 @@ const { productsGet, productsPost, productsPut, productsDelete } = require('../c
 
 const router = Router();
 
-router.get('/products', productsGet);
-router.post('/products', productsPost);
-router.put('/products', productsPut);
-router.delete('/products', productsDelete);
+router.get('/api/products', productsGet);
+router.post('/api/products', productsPost);
+router.put('/api/products', productsPut);
+router.delete('/api/products', productsDelete);
 
 module.exports = router;
