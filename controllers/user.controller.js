@@ -1,5 +1,7 @@
 const { response, request } = require('express');
 const User = require('../models/User.model');
+const bcrypt = require('bcrypt');
+const salt = 10;
 
 const userGet = async (req = request, res = response) => {
 
@@ -14,8 +16,8 @@ const userGet = async (req = request, res = response) => {
 const userPost = async (req = request, res = response) => {
 
     const body = req.body;
-
     let user = User(body);
+    user.password = await bcrypt.hash(user.password, salt);
     await user.save();
 
     res.status(200).json({
