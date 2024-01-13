@@ -8,15 +8,22 @@ const UsersSchema = Schema(
         lastname: {
             type: String
         },
-        phone: {
-            type: String
-        },
         email: {
             type: String
         },
-        ative: {
-            
+        password: {
+            type: String
+        },
+        active: {
+            type: Boolean
+        },
+        dob: {
+            type: Date
+        },
+        notes: {
+            type: String
         }
+        
     },
     {versionKey: false}
 );

@@ -27,11 +27,14 @@ const productsPost = async (req = request, res = response) => {
 const productsPut = async (req = request, res = response) => {
 
     const { id } = req.query;
-    await Product.save();
+    const productToEdit = req.body;
+
+    // new true me devuelve el registro cambiado
+    const updatedProduct = await Product.findByIdAndUpdate(id, productToEdit, {new: true});
 
     res.status(200).json({
-        msg: 'Producto actualizado correctamente',
-        code: id
+        message: 'Producto actualizado correctamente',
+        code: updatedProduct
     });
 }
 
