@@ -1,6 +1,7 @@
 const { response, request } = require('express');
 const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const salt = 10;
 
 const userGet = async (req = request, res = response) => {
@@ -51,9 +52,40 @@ const userDelete = async (req = request, res = response) => {
     });
 }
 
+const loginPost = async (req = request, res = response) => {
+
+    const body = req.body;
+    const userInformationDb = await User.findOne({email: body.email, active: true});
+    if(userInformationDb == null){
+        res.status(404).json({
+            message: 'User not find or not active',
+            code: null
+        });
+    }
+
+    const comparePassword = await bcrypt.compare(body.password, userInformationDb.password);
+
+    if(!comparePassword){
+        res.status(403).json({
+            message: 'Invalid password',
+            code: 'null'
+        });
+    }
+
+    const payload = {
+        full_name : `${userInformationDb.name} ${userInformationDb.lastname}`,
+    }
+
+    res.status(200).json({
+        message: 'Intento de login',
+        code: jwt.sign(payload, process.env.JWT_SIGNATURE)
+    });
+}
+
 module.exports = {
     userGet,
     userPost,
     userPut,
-    userDelete
+    userDelete,
+    loginPost
 }

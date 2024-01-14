@@ -1,4 +1,4 @@
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const chkToken = async (req, res, next) => {
     try {
