@@ -6,11 +6,18 @@ const salt = 10;
 
 const userGet = async (req = request, res = response) => {
 
-    const users = await User.find();
+    const tokenInfo = req.user;
+    const profileRaw = await User.findById(tokenInfo.id);
+    const profile = {
+        name: profileRaw.name,
+        last_name: profileRaw.last_name,
+        email: profileRaw.email,
+        dob: profileRaw.dob
+    }
 
     res.status(200).json({
         message: 'Datos cargados correctamente',
-        data: users
+        data: profile
     });
 }
 
@@ -29,7 +36,7 @@ const userPost = async (req = request, res = response) => {
 
 const userPut = async (req = request, res = response) => {
 
-    const { id } = req.query;
+    const id = req.user.id;
     const userToEdit = req.body;
 
     // new true me devuelve el registro cambiado
