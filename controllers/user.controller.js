@@ -73,6 +73,7 @@ const loginPost = async (req = request, res = response) => {
     }
 
     const payload = {
+        id: userInformationDb._id,
         full_name : `${userInformationDb.name} ${userInformationDb.lastname}`,
         email: userInformationDb.email
     }
