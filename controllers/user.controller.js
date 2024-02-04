@@ -39,6 +39,12 @@ const userPut = async (req = request, res = response) => {
     const id = req.user.id;
     const userToEdit = req.body;
 
+    if(userToEdit.password != null && userToEdit.password != ''){
+        userToEdit.password = bcrypt.hash(userToEdit.password, salt);
+    }else {
+        delete userToEdit.password;
+    }
+
     // new true me devuelve el registro cambiado
     const updatedUser = await User.findByIdAndUpdate(id, userToEdit, {new: true});
 
