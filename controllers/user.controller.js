@@ -10,7 +10,7 @@ const userGet = async (req = request, res = response) => {
     const profileRaw = await User.findById(tokenInfo.id);
     const profile = {
         name: profileRaw.name,
-        last_name: profileRaw.lastname,
+        lastname: profileRaw.lastname,
         email: profileRaw.email,
         dob: profileRaw.dob
     }
