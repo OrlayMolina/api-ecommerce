@@ -3,7 +3,15 @@ const Product = require('../models/Product.model');
 
 const productsGet = async (req = request, res = response) => {
     
-    const products = await Product.find();
+    const id = req.query.id;
+
+    let products = [];
+
+    if(id){
+        products = await Product.findById(id);
+    }else {
+        products = await Product.find();
+    }
 
     res.status(200).json({
         message: 'Datos cargados correctamente',
@@ -44,7 +52,7 @@ const productsDelete = async (req = request, res = response) => {
     await Product.findByIdAndDelete(id);
 
     res.status(200).json({
-        message: 'Producto eliminado correctamente  ',
+        message: 'Producto eliminado correctamente',
         code: id
     });
 }
