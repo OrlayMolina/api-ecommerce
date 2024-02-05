@@ -67,6 +67,8 @@ API de eCommerce en Node.js con Express. Gestiona de carrito de compras y usuari
 <ul>PORT</ul>
 <ul>JWT_SIGNATURE</ul>
 
+<hr>
+
 <b>Linkedin</b>
 
 <a href="https://www.linkedin.com/in/orlay-andres-molina-gomez-71b470241/" target="_blank" rel="noreferrer">
