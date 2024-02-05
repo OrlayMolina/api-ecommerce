@@ -1,6 +1,6 @@
-# Front Ecommerce
+# Back Ecommerce
 
-Ecommerce creado en React, Javascript, React-Router-DOM como requisito para UCamp. Gestiona productos, carritos y usuarios. Potenciada con JavaScript para una experiencia de compra dinámica y eficiente.
+API de eCommerce en Node.js con Express. Gestiona de carrito de compras y usuarios. Potenciada con JavaScript para una experiencia de compra dinámica y eficiente.
 
 ## Tecnologies
 
