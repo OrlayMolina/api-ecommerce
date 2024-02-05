@@ -57,15 +57,15 @@ API de eCommerce en Node.js con Express. Gestiona de carrito de compras y usuari
 
 ### FRONT
 
-VITE_API_URL
-VITE_TKN_NAME
-VITE_PAYPAL_ID
+<ul>VITE_API_URL</ul>
+<ul>VITE_TKN_NAME</ul>
+<ul>VITE_PAYPAL_ID</ul>
 
 ### BACK
 
-MONGO_DB
-PORT
-JWT_SIGNATURE
+<ul>MONGO_DB</ul>
+<ul>PORT</ul>
+<ul>JWT_SIGNATURE</ul>
 
 <b>Linkedin</b>
 
